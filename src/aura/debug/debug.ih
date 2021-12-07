@@ -1,0 +1,23 @@
+#include "debug.h"
+
+#include <iostream>
+#include <iomanip>
+
+#include "../chunk/chunk.h"
+
+using namespace std;
+using namespace aura;
+
+size_t compound_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t compound16_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t constant_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t constant16_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t invoke_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t simple_instruction(char const *name, size_t offset);
+size_t byte_instruction(char const *name, Chunk const &chunk, size_t offset, bool compound);
+size_t byte16_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t invoke_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t invoke16_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t jump_instruction(char const *name, int sign, Chunk const &chunk, size_t offset);
+size_t list_instruction(char const *name, Chunk const &chunk, size_t offset);
+size_t loop_instruction(char const *name, int sign, Chunk const &chunk, size_t offset);

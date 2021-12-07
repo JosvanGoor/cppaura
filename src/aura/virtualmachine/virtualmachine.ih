@@ -1,0 +1,15 @@
+#include "virtualmachine.h"
+
+#include <cstring>
+#include <iostream>
+
+#include "../chunk/chunk.h"
+#include "../compiler/compiler.h"
+#include "../debug/debug.h"
+#include "../enums/opcode.h"
+#include "../objects/objects.h"
+#include "../utility/utility.h"
+#include "../virtualmachine/virtualmachine.h"
+
+using namespace std;
+using namespace aura;

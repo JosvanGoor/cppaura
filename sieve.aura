@@ -1,0 +1,41 @@
+
+class Sieve
+{
+    Sieve()
+    {
+        this.numbers = [];
+    }
+
+    init()
+    {
+        this.numbers.resize(100000000, true); // 1 billion
+    }
+
+    calculate()
+    {
+        for (var idx = 2; idx < this.numbers.size(); idx += 1)
+        {
+            if (this.numbers[idx])
+            {
+                for (var jdx = idx * 2; jdx < 32000; jdx += idx)
+                    this.numbers[jdx] = false;
+            }
+        }
+    }
+
+    is_prime(num)
+    {
+        return this.numbers[num];
+    }
+}
+
+var start = clock();
+var sieve = Sieve();
+sieve.init();
+sieve.calculate();
+print "Sieve from 0 - " + sieve.numbers.size() + " took " + (clock() - start) + " seconds to calculate.";
+
+print "is 99999787 prime: " + sieve.is_prime(99999787);
+
+sieve = nil;
+force_gc();

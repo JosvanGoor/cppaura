@@ -1,0 +1,6 @@
+#include "nativeinterface.h"
+
+#include <iostream>
+
+using namespace std;
+using namespace aura;

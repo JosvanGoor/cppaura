@@ -1,0 +1,9 @@
+#include "valuetable.h"
+
+#include <cstring>
+
+#include "../objects/objects.h"
+#include "../virtualmachine/virtualmachine.h"
+
+using namespace std;
+using namespace aura;

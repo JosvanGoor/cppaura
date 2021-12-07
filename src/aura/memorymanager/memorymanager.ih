@@ -1,0 +1,6 @@
+#include "memorymanager.h"
+
+#include "../objects/objects.h"
+
+using namespace std;
+using namespace aura;

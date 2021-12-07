@@ -1,0 +1,23 @@
+fun val(a1, a2, a3, a4)
+{
+    return a1 + a2 + a3 + a4;
+}
+
+print val(1,2,3,4);
+print val(1,2,3,4);
+
+for (var idx = 0; idx < 25; idx += 1)
+{
+    if (idx == 20)
+        break;
+    
+    if (idx % 2 == 0)
+    {
+        print "I dont even";
+        continue;
+    }
+
+    print "Thats odd";
+}                             
+
+print (0.1 + 0.2 == 0.3);

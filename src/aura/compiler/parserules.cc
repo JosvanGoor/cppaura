@@ -1,0 +1,59 @@
+#include "compiler.ih"
+
+Compiler::ParseRule Compiler::parse_rules[] = 
+{
+    { &Compiler::grouping,  &Compiler::call,        Precedence::CALL },         // LEFT_PAREN
+    { nullptr,              nullptr,                Precedence::NONE },         // RIGHT_PAREN
+    { nullptr,              nullptr,                Precedence::NONE },         // LEFT_BRACE
+    { nullptr,              nullptr,                Precedence::NONE },         // RIGHT_BRACE
+    { &Compiler::list,      &Compiler::subscript,   Precedence::CALL },         // LEFT_BRACKET
+    { nullptr,              nullptr,                Precedence::NONE },         // RIGHT_BRACKET
+    { nullptr,              nullptr,                Precedence::NONE },         // COLON
+    { nullptr,              nullptr,                Precedence::NONE },         // COMMA
+    { nullptr,              &Compiler::dot,         Precedence::CALL },         // DOT
+    { &Compiler::unary,     &Compiler::binary,      Precedence::TERM },         // MINUS
+    { nullptr,              &Compiler::binary,      Precedence::FACTOR },       // PERCENT
+    { nullptr,              &Compiler::binary,      Precedence::TERM },         // PLUS
+    { nullptr,              &Compiler::ternary,     Precedence::TERNARY },      // QUESTIONMARK
+    { nullptr,              nullptr,                Precedence::NONE },         // SEMICOLON
+    { nullptr,              &Compiler::binary,      Precedence::FACTOR },       // SLASH
+    { nullptr,              &Compiler::binary,      Precedence::FACTOR },       // STAR
+    { &Compiler::unary,     nullptr,                Precedence::NONE },         // BANG
+    { nullptr,              &Compiler::binary,      Precedence::EQUALITY },     // BANG_EQUAL
+    { nullptr,              nullptr,                Precedence::NONE },         // EQUAL
+    { nullptr,              &Compiler::binary,      Precedence::EQUALITY },     // EQUAL_EQUAL
+    { nullptr,              &Compiler::binary,      Precedence::COMPARISON },   // GREATER
+    { nullptr,              &Compiler::binary,      Precedence::COMPARISON },   // GREATER_EQUAL
+    { nullptr,              &Compiler::binary,      Precedence::COMPARISON },   // LESS
+    { nullptr,              &Compiler::binary,      Precedence::COMPARISON },   // LESS_EQUAL
+    { nullptr,              nullptr,                Precedence::NONE },         // PLUS_EQUALS
+    { nullptr,              nullptr,                Precedence::NONE },         // MINUS_EQUALS
+    { nullptr,              nullptr,                Precedence::NONE },         // STAR_EQUALS
+    { nullptr,              nullptr,                Precedence::NONE },         // SLASH_EQUALS
+    { nullptr,              nullptr,                Precedence::NONE },         // PERCENT_EQUALS
+    { &Compiler::variable,  nullptr,                Precedence::NONE },         // IDENTIFIER
+    { &Compiler::string_,   nullptr,                Precedence::NONE },         // STRING
+    { &Compiler::integer,   nullptr,                Precedence::NONE },         // INTEGER
+    { &Compiler::floating,  nullptr,                Precedence::NONE },         // FLOAT
+    { nullptr,              &Compiler::and_,        Precedence::AND },          // AND
+    { nullptr,              nullptr,                Precedence::NONE },         // BREAK
+    { nullptr,              nullptr,                Precedence::NONE },         // CLASS
+    { nullptr,              nullptr,                Precedence::NONE },         // CONTINUE
+    { nullptr,              nullptr,                Precedence::NONE },         // ELSE
+    { &Compiler::literal,   nullptr,                Precedence::NONE },         // FALSE
+    { nullptr,              nullptr,                Precedence::NONE },         // FOR
+    { &Compiler::lambda,    nullptr,                Precedence::NONE },         // FUN
+    { nullptr,              nullptr,                Precedence::NONE },         // IF
+    { nullptr,              nullptr,                Precedence::NONE },         // ISA
+    { &Compiler::literal,   nullptr,                Precedence::NONE },         // NIL
+    { nullptr,              &Compiler::or_,         Precedence::OR },           // OR
+    { nullptr,              nullptr,                Precedence::NONE },         // PRINT
+    { nullptr,              nullptr,                Precedence::NONE },         // RETURN
+    { &Compiler::super_,    nullptr,                Precedence::NONE },         // SUPER
+    { &Compiler::this_,     nullptr,                Precedence::NONE },         // THIS
+    { &Compiler::literal,   nullptr,                Precedence::NONE },         // TRUE
+    { nullptr,              nullptr,                Precedence::NONE },         // VAR
+    { nullptr,              nullptr,                Precedence::NONE },         // WHILE
+    { nullptr,              nullptr,                Precedence::NONE },         // ERROR
+    { nullptr,              nullptr,                Precedence::NONE },         // EOS
+};

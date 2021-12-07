@@ -1,0 +1,8 @@
+#include "value.h"
+
+#include <cstring>
+
+#include "../objects/objects.h"
+
+using namespace std;
+using namespace aura;
